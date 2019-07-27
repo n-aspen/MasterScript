@@ -50,23 +50,87 @@ return
 ;Window name
 ;------------------------
 
-^!Numpad5::
+*^!NumpadClear::
 WinGetActiveTitle, Window
 WinSetTitle, %Window%, , %instance1%
 return
 
-^!Numpad4::
+*^!NumpadRight::
 WinGetActiveTitle, Window
 WinSetTitle, %Window%, , %instance2%
 return
 
-^!Numpad6::
+*^!NumpadLeft::
 WinGetActiveTitle, Window
 WinSetTitle, %Window%, , %instance3%
 return
 
-^!Numpad2::
+*^!NumpadDown::
 WinGetActiveTitle, Window
 WinSetTitle, %Window%, , %instance4%
 return
+
+;Gamemode Switch
+;------------------------
+
+Numpad7::
+if  WinActive(instance1){
+	ControlSend, ,{Bind}{t}, %instance1%
+	sleep 150
+	ControlSend, ,{Raw}/gm s, %instance1%
+	sleep 150
+	ControlSend, ,{Enter}, %instance1%
+}
+return
+
+Numpad8::
+if  WinActive(instance1){
+	ControlSend, ,{Bind}{t}, %instance1%
+	sleep 150
+	ControlSend, ,{Raw}/gm sp, %instance1%
+	sleep 150
+	ControlSend, ,{Enter}, %instance1%
+}
+return
+
+Numpad9::
+if  WinActive(instance1){
+	ControlSend, ,{Bind}{t}, %instance1%
+	sleep 150
+	ControlSend, ,{Raw}/gm c, %instance1%
+	sleep 150
+	ControlSend, ,{Enter}, %instance1%
+}
+return
+
+Numpad3::
+if  WinActive(instance1){
+	ControlSend, ,{Bind}{t}, %instance1%
+	sleep 150
+	ControlSend, ,{Raw}/back, %instance1%
+	sleep 150
+	ControlSend, ,{Enter}, %instance1%
+}
+return
+
+^Numpad3::
+ControlSend, ,{Bind}{t}, %instance1%
+sleep 200
+ControlSend, ,{text}/wild, %instance1%
+sleep 150
+ControlSend, ,{Enter}, %instance1%
+SetTimer, Wilding, -1000
+return
+
+Numpad4::
+if  WinActive(instance1){
+	ControlSend, ,{Bind}{t}, %instance1%
+	sleep 150
+	ControlSend, ,{Raw}/co i, %instance1%
+	sleep 150
+	ControlSend, ,{Enter}, %instance1%
+}
+
+Wilding:
+msgbox, 4096 , ,you can use /wild again
 	
