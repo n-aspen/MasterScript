@@ -2,6 +2,8 @@ instance1 = mov51 ;sets the names of each instance in use, soft coding for futur
 instance2 = mov52
 instance3 = mov53
 instance4 = mov54
+SetTitleMatchMode 2
+#SingleInstance Force
 
 ;Window switch
 ;------------------------

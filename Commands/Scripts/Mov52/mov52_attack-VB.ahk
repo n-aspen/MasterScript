@@ -1,8 +1,8 @@
-windowTitle = mov51
-SetTitleMatchMode 3
+windowTitle = mov52
+SetTitleMatchMode 2
 #SingleInstance Force
 
-!^f::
+!^v::
 IfWinExist %windowTitle%
 
 BreakLoop = 0
@@ -13,7 +13,7 @@ BreakLoop = 0
 			BreakLoop = 0
 			break
 		}
-		Sleep 800
+		Sleep 1000
 		ControlClick, , %windowTitle%, ,left, , NAD
 		Sleep 100
 		ControlClick, , %windowTitle%, ,left, , NAU
@@ -21,9 +21,6 @@ BreakLoop = 0
 		}
 	Return
 
-!^g::
+!^b::
 BreakLoop = 1
 return
-
-NumpadMult:: 
-exitapp 
