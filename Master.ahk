@@ -80,7 +80,7 @@ return
 ;------------------------
 
 Numpad7::
-if  WinActive(instance1){  ;checking if the window exists
+if  WinActive(instance1){  ;checking if the window is selected
 	ControlSend, ,{Bind}{t}, %instance1% ;sending "t" to the %instance1% window
 	sleep 150 ;waiting for minecraft to react
 	ControlSend, ,{Raw}/gm s, %instance1% ;sending the command to the %instance1% window now that the chat menu is open
@@ -150,55 +150,53 @@ msgbox, 4096 , ,you can use /wild again ;displaying a mesage box with the "alway
 
 
 numpad5:: 
-if  WinActive(instance1){
-	Loop, Files, D:\git\MasterScript\MasterScript\Commands\Homes\*.txt, F
+if  WinActive(instance1){ ;checking if the window is selected
+	Loop, Files, D:\git\MasterScript\MasterScript\Commands\Homes\*.txt, F ;looping through all .txt files in directory
 	{
-		ButtonName := RegExReplace(A_LoopFileName,".txt$")
-		Gui, +AlwaysOnTop +Owner 
-		Gui, Add, Button, gButtonHandler1 w200, % ButtonName
+		ButtonName := RegExReplace(A_LoopFileName,".txt$") ;setting button name to the file name while removing .txt from the end
+		Gui, +AlwaysOnTop +Owner  ;setting gui to always on top and removing the task bar button
+		Gui, Add, Button, gButtonHandler1 w200, % ButtonName ;adding button with %buttonName% as label
 	}
-	Gui, Show 
+	Gui, Show ;showing gui
 }
 return
 
 ^numpad5:: 
-if  WinActive(instance1)||WinActive(instance2)||WinActive(instance3)|WinActive(instance4){
-	Loop, Files, D:\git\MasterScript\MasterScript\Commands\Scripts\*, D
+if  WinActive(instance1)||WinActive(instance2)||WinActive(instance3)|WinActive(instance4){ ;checking if one of the windows are selected
+	Loop, Files, D:\git\MasterScript\MasterScript\Commands\Scripts\*, D ;looping through every directory at the end of path
 	{
-		HeaderName := % A_LoopFileName 
-		Gui, +AlwaysOnTop +Owner  
-		Gui, Add, Text, y0, % HeaderName
-		Loop, Files, D:\git\MasterScript\MasterScript\Commands\Scripts\%A_LoopFileName%\*.ahk , F
+		HeaderName := % A_LoopFileName ;setting %HeaderName% to found directory name
+		Gui, +AlwaysOnTop +Owner  ;setting gui to always on top and removing the task bar button
+		Gui, Add, Text, y0, % HeaderName ;Adding header labled with %HeaderName%
+		Loop, Files, D:\git\MasterScript\MasterScript\Commands\Scripts\%A_LoopFileName%\*.ahk , F ;looping through all .ahk files contained in found directory with every loop
 		{
-			ButtonName := RegExReplace(A_LoopFileName,".ahk$") 
-			Gui, Add, Button, gButtonHandler2 w200, %HeaderName%/%ButtonName%
+			ButtonName := RegExReplace(A_LoopFileName,".ahk$") ;setting button name to the file name while removing .ahk from the end
+			Gui, Add, Button, gButtonHandler2 w200, %HeaderName%/%ButtonName% ;adding button with %HeaderName%/parent folder and %ButtonName% as label
 		}
 	}
-	Gui, Show 
+	Gui, Show ;showing gui
 }
 return
 
-GuiClose:
-Gui, destroy
+GuiClose: ;when gui closes
+Gui, destroy ;destroy
 return
 
 
 ButtonHandler1:
-	Gui, Hide
-	SetWorkingDir, D:\git\MasterScript\MasterScript\Commands\Homes\
-	FileRead, ComName, %A_GuiControl%.txt
-	controlSend, , t, %instance1%
+	Gui, Hide ;Hides GUI
+	SetWorkingDir, D:\git\MasterScript\MasterScript\Commands\Homes\ ;tells following code where to work
+	FileRead, ComName, %A_GuiControl%.txt ;reads file from button label with appended .txt to make it a propper file path
+	controlSend, , t, %instance1% ;opens chat screen with "t" key
 	sleep 200
-	controlSend, , %ComName%, %instance1%
+	controlSend, , %ComName%, %instance1% ;sends contents of file to window
 	sleep 100
 	controlSend, , {enter}, %instance1%
 Return
 
 ButtonHandler2:
-	Gui, Hide
-	SetWorkingDir, D:\git\MasterScript\MasterScript\Commands\Scripts\
-	Gui, Submit
-    Run %A_AHKPath% %A_GuiControl%.ahk
-	Gui, Hide
+	Gui, Hide ;Hides GUI
+	SetWorkingDir, D:\git\MasterScript\MasterScript\Commands\Scripts\ ;tells following code where to work
+    Run %A_AHKPath% %A_GuiControl%.ahk ;reads file from button label with appended .txt to make it a propper file path
 Return
 	
