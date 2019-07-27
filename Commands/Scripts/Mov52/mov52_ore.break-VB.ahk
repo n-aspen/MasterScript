@@ -2,7 +2,7 @@ windowTitle = mov52
 SetTitleMatchMode 2
 #SingleInstance Force
 
-!^x::
+!^v::
 IfWinExist %windowTitle%
 
 BreakLoop = 0
@@ -24,6 +24,6 @@ BreakLoop = 0
 		}
 	Return
 
-!^c::
+!^b::
 BreakLoop = 1
 return
