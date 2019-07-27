@@ -138,7 +138,65 @@ if  WinActive(instance1){
 	sleep 150
 	ControlSend, ,{Enter}, %instance1%
 }
+return
 
 Wilding:
 msgbox, 4096 , ,you can use /wild again ;displaying a mesage box with the "always on top" setting
+
+;List Homes
+;------------------------
+
+
+numpad5:: 
+if  WinActive(instance1){
+	Loop, Files, D:\git\MasterScript\MasterScript\Commands\Homes\*.txt, F
+	{
+		ButtonName := RegExReplace(A_LoopFileName,".txt$")
+		Gui, +AlwaysOnTop +Owner 
+		Gui, Add, Button, gButtonHandler1 w200, % ButtonName
+	}
+	Gui, Show 
+}
+return
+
+^numpad5:: 
+if  WinActive(instance1)||WinActive(instance2)||WinActive(instance3)|WinActive(instance4){
+	Loop, Files, D:\git\MasterScript\MasterScript\Commands\Scripts\*, D
+	{
+		HeaderName := % A_LoopFileName 
+		Gui, +AlwaysOnTop +Owner  
+		Gui, Add, Text, y0, % HeaderName
+		Loop, Files, D:\git\MasterScript\MasterScript\Commands\Scripts\%A_LoopFileName%\*.ahk , F
+		{
+			ButtonName := RegExReplace(A_LoopFileName,".ahk$") 
+			Gui, Add, Button, gButtonHandler2 w200, %HeaderName%/%ButtonName%
+		}
+	}
+	Gui, Show 
+}
+return
+
+GuiClose:
+Gui, destroy
+return
+
+
+ButtonHandler1:
+	Gui, Hide
+	SetWorkingDir, D:\git\MasterScript\MasterScript\Commands\Homes\
+	FileRead, ComName, %A_GuiControl%.txt
+	controlSend, , t, %instance1%
+	sleep 200
+	controlSend, , %ComName%, %instance1%
+	sleep 100
+	controlSend, , {enter}, %instance1%
+Return
+
+ButtonHandler2:
+	Gui, Hide
+	SetWorkingDir, D:\git\MasterScript\MasterScript\Commands\Scripts\
+	Gui, Submit
+    Run %A_AHKPath% %A_GuiControl%.ahk
+	Gui, Hide
+Return
 	
