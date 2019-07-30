@@ -21,7 +21,7 @@ return
 
 ;repeating for the rest of the instances
 
-*^NumpadLeft::
+*^NumpadRight::
 if WinExist (instance2){
 	WinRestore, % instance2
 	WinActivate, % instance2
@@ -31,7 +31,7 @@ if WinExist (instance2){
 	}
 return
 
-*^NumpadRight::
+*^NumpadLeft::
 if WinExist (instance3){
 	WinRestore, % instance3
 	WinActivate, % instance3
@@ -155,8 +155,9 @@ if  WinActive(instance1){ ;checking if the window is selected
 	{
 		ButtonName := RegExReplace(A_LoopFileName,".txt$") ;setting button name to the file name while removing .txt from the end
 		Gui, +AlwaysOnTop +Owner  ;setting gui to always on top and removing the task bar button
-		Gui, Add, Button, gButtonHandler1 w200, % ButtonName ;adding button with %buttonName% as label
+		Gui, Add, Button, gButtonHandler1 w200 h50, % ButtonName ;adding button with %buttonName% as label
 	}
+	Gui, Font, s60
 	Gui, Show ;showing gui
 }
 return
