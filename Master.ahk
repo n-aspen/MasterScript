@@ -51,20 +51,6 @@ if WinExist (instance4){
 	}
 return
 
-;blank windows
-;------------------------
-
-*^NumpadPgDn::
-WinGet Style, Style, A
-if(Style & 0xC40000) {
-WinSet, Style, -0xC40000, A
-WinSet, Topmost, Toggle, A
-} else {
-WinSet, Style, +0xC40000, A
-WinSet, Topmost, Toggle, A
-}
-return
-
 ;Window name
 ;------------------------
 
