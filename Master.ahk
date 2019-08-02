@@ -12,10 +12,10 @@ SetTitleMatchMode 2
 *^NumpadClear::
 if WinExist (instance1){ ;checking if the window exists
 	WinRestore, % instance1 ;restring window in preperation to maximize it (fixes issue with maximizing window out of screen bounds)
-	WinActivate, % instance1 ;activating window/bringing it to the front of the stack
 	MouseGetPos, X, Y ;placing cursor position in the %X% and %Y% variables for window placement
 	WinMove, %instance1%, , %X%, %Y% ;moving window to cursor position
 	WinMaximize, %instance1% ;maximizing window at new position
+	WinActivate, % instance1 ;activating window/bringing it to the front of the stack
 	}
 return
 
@@ -24,35 +24,50 @@ return
 *^NumpadRight::
 if WinExist (instance2){
 	WinRestore, % instance2
-	WinActivate, % instance2
 	MouseGetPos, X, Y
 	WinMove, %instance2%, , %X%, %Y%
 	WinMaximize, %instance2%
+	WinActivate, % instance2
 	}
 return
 
 *^NumpadLeft::
 if WinExist (instance3){
 	WinRestore, % instance3
-	WinActivate, % instance3
 	MouseGetPos, X, Y
 	WinMove, %instance3%, , %X%, %Y%
 	WinMaximize, %instance3%
+	WinActivate, % instance3
 	}
 return
 
 *^NumpadDown::
 if WinExist (instance4){
 	WinRestore, %instance4%
-	WinActivate, %instance4%
 	MouseGetPos, X, Y
 	WinMove, %instance4%, , %X%, %Y%
 	WinMaximize, %instance4%
+	WinActivate, %instance4%
 	}
+return
+
+;blank windows
+;------------------------
+
+*^NumpadPgDn::
+WinGet Style, Style, A
+if(Style & 0xC40000) {
+WinSet, Style, -0xC40000, A
+WinSet, Topmost, Toggle, A
+} else {
+WinSet, Style, +0xC40000, A
+WinSet, Topmost, Toggle, A
+}
 return
 
 ;Window name
 ;------------------------
+
 
 *^!NumpadClear::
 WinGetActiveTitle, Window ;getting active (selected) window and placing title in the variable %Window%
@@ -149,7 +164,7 @@ msgbox, 4096 , ,you can use /wild again ;displaying a mesage box with the "alway
 ;------------------------
 
 
-numpad5:: 
+numpad5::
 if  WinActive(instance1){ ;checking if the window is selected
 	Loop, Files, D:\git\MasterScript\MasterScript\Commands\Homes\*.txt, F ;looping through all .txt files in directory
 	{
@@ -157,12 +172,11 @@ if  WinActive(instance1){ ;checking if the window is selected
 		Gui, +AlwaysOnTop +Owner  ;setting gui to always on top and removing the task bar button
 		Gui, Add, Button, gButtonHandler1 w200 h50, % ButtonName ;adding button with %buttonName% as label
 	}
-	Gui, Font, s60
 	Gui, Show ;showing gui
 }
 return
 
-^numpad5:: 
+^numpad5::
 if  WinActive(instance1)||WinActive(instance2)||WinActive(instance3)|WinActive(instance4){ ;checking if one of the windows are selected
 	Loop, Files, D:\git\MasterScript\MasterScript\Commands\Scripts\*, D ;looping through every directory at the end of path
 	{
@@ -178,11 +192,6 @@ if  WinActive(instance1)||WinActive(instance2)||WinActive(instance3)|WinActive(i
 	Gui, Show ;showing gui
 }
 return
-
-GuiClose: ;when gui closes
-Gui, destroy ;destroy
-return
-
 
 ButtonHandler1:
 	Gui, Hide ;Hides GUI
@@ -200,4 +209,8 @@ ButtonHandler2:
 	SetWorkingDir, D:\git\MasterScript\MasterScript\Commands\Scripts\ ;tells following code where to work
     Run %A_AHKPath% %A_GuiControl%.ahk ;reads file from button label with appended .txt to make it a propper file path
 Return
-	
+
+
+GuiClose: ;when gui closes
+Gui, destroy ;destroy
+return

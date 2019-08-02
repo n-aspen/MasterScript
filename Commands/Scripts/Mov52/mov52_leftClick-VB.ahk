@@ -11,13 +11,11 @@ BreakLoop = 0
 		if (BreakLoop = 1)
 		{
 			BreakLoop = 0
+			ControlClick, , %windowTitle%, ,left, , NAU
 			break
 		}
-
-		Sleep 100
-		ControlClick, , %windowTitle%, ,left, , NAD
 		Sleep 500
-		ControlClick, , %windowTitle%, ,left, , NAU
+		ControlClick, , %windowTitle%, ,left, , NAD
 		}
 	Return
 
