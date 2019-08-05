@@ -54,9 +54,16 @@ return
 ;Window name
 ;------------------------
 
+oldTitle = noneYouMoron
+
+*^!NumpadPgDn::
+WinGetActiveTitle, Window ;getting active (selected) window and placing title in the variable %Window%
+WinSetTitle, %Window%, , %oldTitle% ;Setting window acquired previously to old title
+return
 
 *^!NumpadClear::
 WinGetActiveTitle, Window ;getting active (selected) window and placing title in the variable %Window%
+oldTitle = %Window%
 WinSetTitle, %Window%, , %instance1% ;Setting window acquired previously to appropriate instance
 return
 
@@ -64,16 +71,19 @@ return
 
 *^!NumpadRight::
 WinGetActiveTitle, Window
+oldTitle = %Window%
 WinSetTitle, %Window%, , %instance2%
 return
 
 *^!NumpadLeft::
 WinGetActiveTitle, Window
+oldTitle = %Window%
 WinSetTitle, %Window%, , %instance3%
 return
 
 *^!NumpadDown::
 WinGetActiveTitle, Window
+oldTitle = %Window%
 WinSetTitle, %Window%, , %instance4%
 return
 
