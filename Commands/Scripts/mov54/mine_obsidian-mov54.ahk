@@ -3,7 +3,7 @@ SetTitleMatchMode 3 ;sets window match mode to exact
 #SingleInstance Force ;only one version of the script can be open, makes it easy to replace old version with new one
 
 !^s::
-
+BreakLoop = 0
 ;this varys depending on the height of the pillar and whether ort not you are mining 2 or 1 blocks per y height
 loop{
 	FileRead, counts, D:\minecraft\multimc\mov51\instances\mov54-1.14.4\.minecraft\config\positionWrite\Ypos.txt
