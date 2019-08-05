@@ -2,8 +2,51 @@ instance1 = mov51 ;sets the names of each instance in use, soft coding for futur
 instance2 = mov52
 instance3 = mov53
 instance4 = mov54
+page = 1
+SetKeyDelay, 15, 20
 SetTitleMatchMode 2
 #SingleInstance Force
+
+;core page
+
+^Numpad7::
+if  WinActive(instance1){  ;checking if the window is selected
+	ControlSend, ,{Bind}{t}, %instance1% ;sending "t" to the %instance1% window
+	sleep 150 ;waiting for minecraft to react
+	page := page - 1
+	ControlSend, ,{text}/co l %page% , %instance1% ;sending the command to the %instance1% window now that the chat menu is open
+	sleep 150 ;waiting for minecraft to react
+	ControlSend, ,{Enter}, %instance1% ;sending the enter key to send command
+}
+return
+
+^Numpad8::
+if  WinActive(instance1){
+	page = 1
+	sleep 150
+}
+return
+
+^!Numpad8::
+if  WinActive(instance1){  ;checking if the window is selected
+	ControlSend, ,{Bind}{t}, %instance1% ;sending "t" to the %instance1% window
+	sleep 150 ;waiting for minecraft to react
+	ControlSend, ,{text}/co l %page% , %instance1% ;sending the command to the %instance1% window now that the chat menu is open
+	sleep 150 ;waiting for minecraft to react
+	ControlSend, ,{Enter}, %instance1% ;sending the enter key to send command
+}
+return
+
+^Numpad9::
+if  WinActive(instance1){
+	ControlSend, ,{Bind}{t}, %instance1%
+	sleep 150
+	page := page + 1
+	ControlSend, ,{text}/co l %page% , %instance1%
+	sleep 150
+	ControlSend, ,{Enter}, %instance1%
+}
+return
 
 ;Window switch
 ;------------------------
@@ -99,8 +142,6 @@ if  WinActive(instance1){  ;checking if the window is selected
 	ControlSend, ,{Enter}, %instance1% ;sending the enter key to send command
 }
 return
-
-;repeating for the rest of the instances
 
 Numpad8::
 if  WinActive(instance1){
