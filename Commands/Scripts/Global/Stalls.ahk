@@ -1,41 +1,48 @@
-RegionNumber = 67 ;Stall number to start at
+indoorNUM = 3
+outdoor9NUM = 3
+outdoor11NUM = 3
+outdoor13NUM = 3
+custom13NUM = 3
 
 ^r:: ;HOTKEY
-;small outdoor stall 9x9
-Chat("//expand 40 up")
-Chat("/rg define stall"RegionNumber)
-KeyWait, RButton, D ;waits for right button press
-sleep 500 ;sleeps for sign GUI to open
-DefineStall("2000", RegionNumber)
-RegionNumber++
+;small indoor stall
+Chat("/rg define indoor-"indoorNUM)
+Chat("/as add rent indoor-"outdoor9NUM)
+Chat("/as groupadd indoor indoor-"outdoor9NUM)
+indoorNUM++
 Return
 ^t:: ;HOTKEY
+;small outdoor stall 9x9
+Chat("//expand 30 up")
+Chat("/rg define outdoor9-"outdoor9NUM)
+Chat("/as add rent outdoor9-"outdoor9NUM)
+Chat("/as groupadd outdoor9 outdoor9-"outdoor9NUM)
+outdoor9NUM++
+Return
+^y:: ;HOTKEY
 ;meduim outdoor stall 11x11
-Chat("//expand 40 up")
-Chat("/rg define stall"RegionNumber)
-KeyWait, RButton, D ;waits for right button press
-sleep 500
-DefineStall("3000", RegionNumber)
-RegionNumber++
+Chat("//expand 30 up")
+Chat("/rg define outdoor11-"outdoor11NUM)
+Chat("/as add rent outdoor11-"outdoor11NUM)
+Chat("/as groupadd outdoor11 outdoor11-"outdoor11NUM)
+outdoor11NUM++
 Return
 ^f:: ;HOTKEY
 ;large outdoor stall 13x13
-Chat("//expand 40 up")
-Chat("/rg define stall"RegionNumber)
-KeyWait, RButton, D ;waits for right button press
-sleep 500 ;sleeps for sign GUI to open
-DefineStall("4000", RegionNumber)
-RegionNumber++
+Chat("//expand 30 up")
+Chat("/rg define outdoor13-"outdoor13NUM)
+Chat("/as add rent outdoor13-"outdoor13NUM)
+Chat("/as groupadd outdoor13 outdoor13-"outdoor13NUM)
+outdoor13NUM++
 Return
 ^g:: ;HOTKEY
 ;Custom stall 13x13 no building
 Chat("//expand 20 up")
 Chat("//expand 2 down")
-Chat("/rg define stall"RegionNumber)
-KeyWait, RButton, D ;waits for right button press
-sleep 500 ;sleeps for sign GUI to open
-DefineStall("5000", RegionNumber)
-RegionNumber++
+Chat("/rg define custom13-"custom13NUM)
+Chat("/as add rent custom13-"custom13NUM)
+Chat("/as groupadd custom13 custom13-"custom13NUM)
+custom13NUM++
 Return
 
 Chat(message){
@@ -45,13 +52,4 @@ Chat(message){
   sleep 150 ;waits for minecraft to finish displaying the text
   Send {Enter} ;sends chat message
   Return
-}
-DefineStall(Price, number){
-  send, {text}[asrent] ;starts off by defining the sarea shop sign
-  send, {Enter} ;moves to next line on sign
-  send, {text}stall%number% ;sets stall number
-  send, {Enter} ;moves to next line on sign
-  send, {text}1 w ;defines rent time on stall
-  send, {Enter} ;moves to next line on sign
-  send, {text}%Price% ;sets price of stall
 }
