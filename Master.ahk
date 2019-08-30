@@ -4,7 +4,7 @@ instance3 = mov53
 instance4 = mov54
 page = 1
 SetKeyDelay, 15, 20
-SetTitleMatchMode 2
+SetTitleMatchMode 3
 #SingleInstance Force
 
 ;core page

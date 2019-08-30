@@ -1,8 +1,6 @@
-SetTitleMatchMode 3
-StallType = 0
 RegionNumber = 67 ;Stall number to start at
 
-^t::
+^r:: ;HOTKEY
 ;small outdoor stall 9x9
 Chat("//expand 40 up")
 Chat("/rg define stall"RegionNumber)
@@ -11,7 +9,7 @@ sleep 500 ;sleeps for sign GUI to open
 DefineStall("2000", RegionNumber)
 RegionNumber++
 Return
-^g::
+^t:: ;HOTKEY
 ;meduim outdoor stall 11x11
 Chat("//expand 40 up")
 Chat("/rg define stall"RegionNumber)
@@ -20,7 +18,7 @@ sleep 500
 DefineStall("3000", RegionNumber)
 RegionNumber++
 Return
-^b::
+^f:: ;HOTKEY
 ;large outdoor stall 13x13
 Chat("//expand 40 up")
 Chat("/rg define stall"RegionNumber)
@@ -29,7 +27,7 @@ sleep 500 ;sleeps for sign GUI to open
 DefineStall("4000", RegionNumber)
 RegionNumber++
 Return
-^v::
+^g:: ;HOTKEY
 ;Custom stall 13x13 no building
 Chat("//expand 20 up")
 Chat("//expand 2 down")

@@ -17,7 +17,7 @@ BreakLoop = 0
 		ControlClick, , %windowTitle%, ,left, , NAD
 		Sleep 100
 		ControlClick, , %windowTitle%, ,left, , NAU
-		Sleep 250
+		Sleep 500
 		ControlClick, , %windowTitle%, ,WheelUp, , NAU
 		Sleep 2000
 		ControlClick, , %windowTitle%, ,WheelDown, , NAU
@@ -29,5 +29,5 @@ BreakLoop = 0
 BreakLoop = 1
 return
 
-NumpadMult:: 
-exitapp 
+NumpadMult::
+exitapp
