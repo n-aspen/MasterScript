@@ -54,10 +54,6 @@ return
 
 *^NumpadClear::
 if WinExist (instance1){ ;checking if the window exists
-	WinRestore, % instance1 ;restring window in preperation to maximize it (fixes issue with maximizing window out of screen bounds)
-	MouseGetPos, X, Y ;placing cursor position in the %X% and %Y% variables for window placement
-	WinMove, %instance1%, , %X%, %Y% ;moving window to cursor position
-	WinMaximize, %instance1% ;maximizing window at new position
 	WinActivate, % instance1 ;activating window/bringing it to the front of the stack
 	}
 return
@@ -66,30 +62,18 @@ return
 
 *^NumpadRight::
 if WinExist (instance2){
-	WinRestore, % instance2
-	MouseGetPos, X, Y
-	WinMove, %instance2%, , %X%, %Y%
-	WinMaximize, %instance2%
 	WinActivate, % instance2
 	}
 return
 
 *^NumpadLeft::
 if WinExist (instance3){
-	WinRestore, % instance3
-	MouseGetPos, X, Y
-	WinMove, %instance3%, , %X%, %Y%
-	WinMaximize, %instance3%
 	WinActivate, % instance3
 	}
 return
 
 *^NumpadDown::
 if WinExist (instance4){
-	WinRestore, %instance4%
-	MouseGetPos, X, Y
-	WinMove, %instance4%, , %X%, %Y%
-	WinMaximize, %instance4%
 	WinActivate, %instance4%
 	}
 return
