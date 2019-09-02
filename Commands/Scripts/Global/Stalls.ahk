@@ -1,8 +1,8 @@
-indoorNUM = 3
-outdoor9NUM = 3
-outdoor11NUM = 3
-outdoor13NUM = 3
-custom13NUM = 3
+indoorNUM = 1
+outdoor9NUM = 1
+outdoor11NUM = 1
+outdoor13NUM = 1
+custom13NUM = 1
 
 ^r:: ;HOTKEY
 ;small indoor stall
