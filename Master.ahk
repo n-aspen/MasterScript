@@ -188,7 +188,7 @@ msgbox, 4096 , ,you can use /wild again ;displaying a mesage box with the "alway
 
 numpad5::
 if  WinActive(instance1){ ;checking if the window is selected
-	Loop, Files, .\Commands\Homes\*.txt, F ;looping through all .txt files in directory
+	Loop, Files, %A_ScriptDir%\Commands\Homes\*.txt, F ;looping through all .txt files in directory
 	{
 		ButtonName := RegExReplace(A_LoopFileName,".txt$") ;setting button name to the file name while removing .txt from the end
 		Gui, +AlwaysOnTop +Owner  ;setting gui to always on top and removing the task bar button
@@ -200,12 +200,12 @@ return
 
 ^numpad5::
 if  WinActive(instance1)||WinActive(instance2)||WinActive(instance3)|WinActive(instance4){ ;checking if one of the windows are selected
-	Loop, Files, .\Commands\Scripts\*, D ;looping through every directory at the end of path
+	Loop, Files, %A_ScriptDir%\Commands\Scripts\*, D ;looping through every directory at the end of path
 	{
 		HeaderName := % A_LoopFileName ;setting %HeaderName% to found directory name
 		Gui, +AlwaysOnTop +Owner  ;setting gui to always on top and removing the task bar button
 		Gui, Add, Text, y0, % HeaderName ;Adding header labled with %HeaderName%
-		Loop, Files, .\Commands\Scripts\%A_LoopFileName%\*.ahk , F ;looping through all .ahk files contained in found directory with every loop
+		Loop, Files, Commands\Scripts\%A_LoopFileName%\*.ahk , F ;looping through all .ahk files contained in found directory with every loop
 		{
 			ButtonName := RegExReplace(A_LoopFileName,".ahk$") ;setting button name to the file name while removing .ahk from the end
 			Gui, Add, Button, gButtonHandler2 w200, %HeaderName%/%ButtonName% ;adding button with %HeaderName%/parent folder and %ButtonName% as label
@@ -217,7 +217,7 @@ return
 
 ButtonHandler1:
 	Gui, Hide ;Hides GUI
-	SetWorkingDir, .\Commands\Homes\ ;tells following code where to work
+	SetWorkingDir, %A_ScriptDir%\Commands\Homes\ ;tells following code where to work
 	FileRead, ComName, %A_GuiControl%.txt ;reads file from button label with appended .txt to make it a propper file path
 	controlSend, , t, %instance1% ;opens chat screen with "t" key
 	sleep 200
@@ -228,7 +228,7 @@ Return
 
 ButtonHandler2:
 	Gui, Hide ;Hides GUI
-	SetWorkingDir, .\Commands\Scripts\ ;tells following code where to work
+	SetWorkingDir, %A_ScriptDir%\Commands\Scripts\ ;tells following code where to work
     Run %A_AHKPath% %A_GuiControl%.ahk ;reads file from button label with appended .txt to make it a propper file path
 Return
 
