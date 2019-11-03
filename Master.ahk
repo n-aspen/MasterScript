@@ -11,7 +11,7 @@ SetTitleMatchMode 3
 ;core page
 
 ;Add 1 from page pos
-^Numpad7::
+^F19::
 if  WinActive(instance1){  ;checking if the window is selected
 	ControlSend, ,{Bind}{t}, %instance1% ;sending "t" to the %instance1% window
 	sleep 150 ;waiting for minecraft to react
@@ -23,7 +23,7 @@ if  WinActive(instance1){  ;checking if the window is selected
 return
 
 ;Subtract 10 from page pos
-^!Numpad7::
+^!F19::
 if  WinActive(instance1){  ;checking if the window is selected
 	ControlSend, ,{Bind}{t}, %instance1% ;sending "t" to the %instance1% window
 	sleep 150 ;waiting for minecraft to react
@@ -35,7 +35,7 @@ if  WinActive(instance1){  ;checking if the window is selected
 return
 
 ;Reset page
-^Numpad8::
+^F20::
 if  WinActive(instance1){
 	page = 1
 	sleep 150
@@ -43,7 +43,7 @@ if  WinActive(instance1){
 return
 
 ;Display the same page again
-^!Numpad8::
+^!F20::
 if  WinActive(instance1){  ;checking if the window is selected
 	ControlSend, ,{Bind}{t}, %instance1% ;sending "t" to the %instance1% window
 	sleep 150 ;waiting for minecraft to react
@@ -54,7 +54,7 @@ if  WinActive(instance1){  ;checking if the window is selected
 return
 
 ;Add 1 to page pos
-^Numpad9::
+^F21::
 if  WinActive(instance1){
 	ControlSend, ,{Bind}{t}, %instance1%
 	sleep 150
@@ -66,7 +66,7 @@ if  WinActive(instance1){
 return
 
 ;Add 10 to page pos
-^!Numpad9::
+^!F21::
 if  WinActive(instance1){  ;checking if the window is selected
 	ControlSend, ,{Bind}{t}, %instance1% ;sending "t" to the %instance1% window
 	sleep 150 ;waiting for minecraft to react
@@ -81,7 +81,7 @@ return
 ;------------------------
 
 
-*^NumpadClear::
+*^F17::
 if WinExist (instance1){ ;checking if the window exists
 	WinActivate, % instance1 ;activating window/bringing it to the front of the stack
 	}
@@ -89,19 +89,19 @@ return
 
 ;repeating for the rest of the instances
 
-*^NumpadRight::
+*^F18::
 if WinExist (instance2){
 	WinActivate, % instance2
 	}
 return
 
-*^NumpadLeft::
+*^F16::
 if WinExist (instance3){
 	WinActivate, % instance3
 	}
 return
 
-*^NumpadDown::
+*^F14::
 if WinExist (instance4){
 	WinActivate, %instance4%
 	}
@@ -112,12 +112,12 @@ return
 
 oldTitle = noneYouMoron
 
-*^!NumpadPgDn::
+*^!F15::
 WinGetActiveTitle, Window ;getting active (selected) window and placing title in the variable %Window%
 WinSetTitle, %Window%, , %oldTitle% ;Setting window acquired previously to old title
 return
 
-*^!NumpadClear::
+*^!F17::
 WinGetActiveTitle, Window ;getting active (selected) window and placing title in the variable %Window%
 oldTitle = %Window%
 WinSetTitle, %Window%, , %instance1% ;Setting window acquired previously to appropriate instance
@@ -125,28 +125,34 @@ return
 
 ;repeating for the rest of the instances
 
-*^!NumpadRight::
+*^!F18::
 WinGetActiveTitle, Window
 oldTitle = %Window%
 WinSetTitle, %Window%, , %instance2%
 return
 
-*^!NumpadLeft::
+*^!F16::
 WinGetActiveTitle, Window
 oldTitle = %Window%
 WinSetTitle, %Window%, , %instance3%
 return
 
-*^!NumpadDown::
+*^!F14::
 WinGetActiveTitle, Window
 oldTitle = %Window%
 WinSetTitle, %Window%, , %instance4%
 return
 
+*^!F20::
+WinGetActiveTitle, Window
+oldTitle = %Window%
+WinSetTitle, %Window%, , mov51-sprout
+return
+
 ;Gamemode Switch
 ;------------------------
 
-Numpad7::
+F19::
 if  WinActive(instance1){  ;checking if the window is selected
 	ControlSend, ,{Bind}{t}, %instance1% ;sending "t" to the %instance1% window
 	sleep 150 ;waiting for minecraft to react
@@ -156,7 +162,7 @@ if  WinActive(instance1){  ;checking if the window is selected
 }
 return
 
-Numpad8::
+F20::
 if  WinActive(instance1){
 	ControlSend, ,{Bind}{t}, %instance1%
 	sleep 150
@@ -166,7 +172,7 @@ if  WinActive(instance1){
 }
 return
 
-Numpad9::
+F21::
 if  WinActive(instance1){
 	ControlSend, ,{Bind}{t}, %instance1%
 	sleep 150
@@ -176,7 +182,7 @@ if  WinActive(instance1){
 }
 return
 
-Numpad3::
+F15::
 if  WinActive(instance1){
 	ControlSend, ,{Bind}{t}, %instance1%
 	sleep 150
@@ -186,7 +192,7 @@ if  WinActive(instance1){
 }
 return
 
-^Numpad3::
+^F15::
 if  WinActive(instance1){
 	ControlSend, ,{Bind}{t}, %instance1%
 	sleep 200
@@ -197,7 +203,7 @@ if  WinActive(instance1){
 }
 return
 
-Numpad4::
+F16::
 if  WinActive(instance1){
 	ControlSend, ,{Bind}{t}, %instance1%
 	sleep 150
@@ -214,7 +220,7 @@ msgbox, 4096 , ,you can use /wild again ;displaying a mesage box with the "alway
 ;------------------------
 
 
-numpad5::
+F17::
 if  WinActive(instance1){ ;checking if the window is selected
 	Loop, Files, %A_ScriptDir%\Commands\Homes\*.txt, F ;looping through all .txt files in directory
 	{
@@ -226,7 +232,7 @@ if  WinActive(instance1){ ;checking if the window is selected
 }
 return
 
-^numpad5::
+^F17::
 if  WinActive(instance1)||WinActive(instance2)||WinActive(instance3)|WinActive(instance4){ ;checking if one of the windows are selected
 	Loop, Files, %A_ScriptDir%\Commands\Scripts\*, D ;looping through every directory at the end of path
 	{
