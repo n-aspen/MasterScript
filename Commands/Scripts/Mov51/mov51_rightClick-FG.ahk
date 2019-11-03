@@ -14,9 +14,9 @@ BreakLoop = 0 ;a variable used to break out of the loop
 			break ;exits loop
 		}
 
-		Sleep 100 ;waits 100ms
+		Sleep 10 ;waits 100ms
 		ControlClick, , %windowTitle%, ,right, , NAD ;presses down the right mouse button
-		Sleep 500	;waits 500ms
+		Sleep 10	;waits 500ms
 		ControlClick, , %windowTitle%, ,right, , NAU ;lifts the right mouse button
 		}
 	Return ;returns when you exit the loop, waiting for another keybind

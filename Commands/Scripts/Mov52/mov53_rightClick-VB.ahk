@@ -1,4 +1,4 @@
-windowTitle = mov53 ;the title of the window you are fishing with IE Minecraft 1.14.3
+windowTitle = mov52 ;the title of the window you are fishing with IE Minecraft 1.14.3
 SetTitleMatchMode 2
 #SingleInstance Force ;ensures that only 1 version of the script is running
 
@@ -14,9 +14,9 @@ BreakLoop = 0 ;a variable used to break out of the loop
 			break ;exits loop
 		}
 
-		Sleep 100 ;waits 100ms
+		Sleep 600 ;waits 100ms
 		ControlClick, , %windowTitle%, ,right, , NAD ;presses down the right mouse button
-		Sleep 500	;waits 500ms
+		Sleep 200	;waits 500ms
 		ControlClick, , %windowTitle%, ,right, , NAU ;lifts the right mouse button
 		}
 	Return ;returns when you exit the loop, waiting for another keybind
