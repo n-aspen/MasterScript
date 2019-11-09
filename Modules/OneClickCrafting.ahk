@@ -1,4 +1,4 @@
-^!C::
+^+C::
 if  WinActive(instance1){
 	MouseGetPos, MY, MX
 	Send {Shift down}
