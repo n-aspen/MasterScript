@@ -11,6 +11,7 @@ CoordMode, Mouse, Client
 
 ;Crafting Click
 #Include %A_ScriptDir%\Modules\OneClickCrafting.ahk
+#Include %A_ScriptDir%\Modules\Repeat\Attack.ahk
 
 ;coreInspecy
 #Include %A_ScriptDir%\Modules\CoreInspect\Pagination.ahk
