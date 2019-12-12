@@ -1,5 +1,5 @@
 windowTitle = mov51 ;the title of the window you are fishing with IE Minecraft 1.14.3
-SetTitleMatchMode 2
+SetTitleMatchMode 3
 #SingleInstance Force ;ensures that only 1 version of the script is running
 
 !^v:: ;key to start the loop. get key combos from here https://www.autohotkey.com/docs/KeyList.htm
