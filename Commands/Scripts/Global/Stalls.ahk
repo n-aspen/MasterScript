@@ -7,8 +7,8 @@ custom13NUM = 1
 ^r:: ;HOTKEY
 ;small indoor stall
 Chat("/rg define indoor-"indoorNUM)
-Chat("/as add rent indoor-"outdoor9NUM)
-Chat("/as groupadd indoor indoor-"outdoor9NUM)
+Chat("/as add rent indoor-"indoorNUM)
+Chat("/as groupadd indoor indoor-"indoorNUM)
 indoorNUM++
 Return
 ^t:: ;HOTKEY
