@@ -4,8 +4,6 @@ SetTitleMatchMode 3 ;sets window match mode to exact
 
 !^v::
 mine(mov52)
-mine(mov53)
-mine(mov54)
 return
 
 !^b::
@@ -17,7 +15,7 @@ reload
 
 mine(account){
 	if WinExist(%account%){
-		FileRead, counts, D:\minecraft\multimc\%account%\instances\%account%-1.14.4\.minecraft\config\positionWrite\Ypos.txt
+		FileRead, counts, D:\minecraft\multimc\mov51\instances\%account%-1.14.4\.minecraft\config\positionWrite\Ypos.txt
 
 		ControlSend , , {Alt down}, %account%
 		ControlClick, , %account%, ,left, , NAD ;presses the left click button for each named window. to add more duplicate the line below the last one and iterate.
