@@ -19,5 +19,23 @@ if  WinActive(instance1){
 }
 return
 
+^!f13::
+if  WinActive(instance1){
+	chat("/hub")
+}
+return
+^!f14::
+if  WinActive(instance1){
+	chat("/survival")
+}
+return
+
+^!f15::
+if  WinActive(instance1){
+	chat("/creative")
+}
+return
+
+
 Wilding:
 msgbox, 4096 , ,you can use /wild again ;displaying a mesage box with the "always on top" setting
