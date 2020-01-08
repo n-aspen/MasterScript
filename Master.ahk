@@ -48,11 +48,13 @@ GuiClose: ;when gui closes
 Gui, destroy ;destroy
 return
 
-Chat(message){
-  send {Bind}{t} ;opens chat GUI
-  sleep 150 ;waits for chat GUI to beready
-  Send {text}%message% ;sends message that was sent to funcion
-  sleep 150 ;waits for minecraft to finish displaying the text
-  Send {Enter} ;sends chat message
+Chat(message, window){
+  if WinActive(window){
+    ControlSend, , t, %window%
+    sleep 150 ;waits for chat GUI to beready
+    ControlSend, , {text}%message%, %window%
+    sleep 150 ;waits for minecraft to finish displaying the text
+    ControlSend, , {Enter}, %window%
+}
   Return
 }
