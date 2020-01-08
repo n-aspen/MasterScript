@@ -15,9 +15,5 @@ ButtonHandler1:
 	Gui, Homes:Hide ;Hides GUI
 	SetWorkingDir, %A_ScriptDir%\Commands\Homes\ ;tells following code where to work
 	FileRead, ComName, %A_GuiControl%.txt ;reads file from button label with appended .txt to make it a propper file path
-	controlSend, , t, %instance1% ;opens chat screen with "t" key
-	sleep 200
-	controlSend, , %ComName%, %instance1% ;sends contents of file to window
-	sleep 100
-	controlSend, , {enter}, %instance1%
+  chat(ComName,instance1)
 Return
