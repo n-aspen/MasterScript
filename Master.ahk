@@ -55,6 +55,15 @@ Chat(message, window){
     ControlSend, , {text}%message%, %window%
     sleep 150 ;waits for minecraft to finish displaying the text
     ControlSend, , {Enter}, %window%
+  }
+  Return
 }
+
+ChatNoCheck(message, window){
+  ControlSend, , t, %window%
+  sleep 150 ;waits for chat GUI to beready
+  ControlSend, , {text}%message%, %window%
+  sleep 150 ;waits for minecraft to finish displaying the text
+  ControlSend, , {Enter}, %window%
   Return
 }
