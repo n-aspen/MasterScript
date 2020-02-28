@@ -20,3 +20,7 @@ return
 ^!f15::
 chat("/creative",instance1)
 return
+
+^!+f18::
+chat("/autopickup",instance1)
+return
